@@ -6,7 +6,11 @@
 #include "../Div.hpp"
 #include "../base.hpp"
 #include "../op.hpp"
+
+#include "../iterator.hpp"
+
 #include "Num_Child_Test.hpp"
+
 
 TEST(numChildTest, TwoChildren){
 
@@ -34,6 +38,38 @@ TEST(GetChildTest, Left){
 	delete pow;
 
 }
+
+TEST(GetChildTest, NoChild){
+
+	Base* op = new Op(-1);
+
+	EXPECT_EQ(op->get_child(100), nullptr);
+
+	delete op;
+}
+
+TEST(GetChildTest, Right){
+
+	Base* lhs = new Op(-1);
+
+        Base* rhs = new Op(11);
+
+        Base* add= new Add(lhs, rhs);
+	
+	Base* div = new Div(new Op(-100), new Op(50));
+
+        Base* pow = new Pow(add, div);
+	
+	Base* sub = new Sub(pow, new Op(-10));
+
+        EXPECT_EQ(sub->get_child(1)->evaluate(), -10);
+	
+	delete sub;
+}
+
+
+
+
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();

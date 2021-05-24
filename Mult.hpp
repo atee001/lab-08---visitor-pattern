@@ -30,9 +30,14 @@ class Mult : public Base {
 
     }
 
+    int number_of_children() {       
+      numChild = 2;
+     }
+
+   
   private:
 
     Base* lhs;
     Base* rhs;
-
+    int numChild;
 };

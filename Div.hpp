@@ -33,10 +33,14 @@ class Div : public Base {
       return "(" + lhs->stringify() + "/" + rhs->stringify() + ")";
 
     }
+    int number_of_children() {
+      numChild = 2;
+    }
+
 
   private:
 
     Base* lhs;
     Base* rhs;
-
+    int numChild;
 };

@@ -28,12 +28,17 @@ using namespace std;
 				delete lhs;
 				delete rhs;
 			}
+			
+			int number_of_children() {
+                                numChild = 2;
+                        }
+
 
                 private:
 
                         Base* lhs;
                         Base* rhs;
-
-
+			int numChild;
+			
 
         };

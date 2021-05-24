@@ -1,37 +1,25 @@
-#pragma once
+#ifndef __OP_HPP__
+#define __OP_HPP__
+
 #include "base.hpp"
 #include <iostream>
 #include <sstream>
 #include <iomanip>
-#include <time.h>
-#include <stdlib.h>
+
 using namespace std;
 
-class Rand : public Base {
+class Op : public Base {
 	public:
-		Rand() : Base() {
-			srand(time(NULL)); 
-			this->value = rand()%100;
-		 }
+		Op(double value) : Base() { this->value = value; }
 		virtual double evaluate() { return value; }
 		virtual std::string stringify() { 
 			ostringstream ss;
 			ss << setprecision(8) << noshowpoint << value;
 			return ss.str();
-
-		}
-		int number_of_children() {
-         return 0;
-     }
-
-		Base* get_child(int i){
-
-     			return nullptr;
-
-    		}
-
-
+	}
 	private:
 		double value;
-	
+
 };
+
+#endif //__OP_HPP__

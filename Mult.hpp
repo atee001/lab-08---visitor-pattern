@@ -30,11 +30,16 @@ class Mult : public Base {
 
     }
     Base* get_child(int i){
-
-     return (i == 0) ? lhs : (i == 1) ? rhs : nullptr;
+      
+      return (i == 0) ? lhs : (i == 1) ? rhs : nullptr;
 
     }
-	
+
+    int number_of_children() {
+             return 2;
+     }
+
+
   private:
 
     Base* lhs;

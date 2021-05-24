@@ -28,6 +28,12 @@ using namespace std;
 				delete lhs;
 				delete rhs;
 			}
+
+			int number_of_children() {
+           return 2;
+      }
+
+
 				
 			Base* get_child(int i){
 
@@ -35,11 +41,12 @@ using namespace std;
 
     			}
 
+
                 private:
 
                         Base* lhs;
                         Base* rhs;
-
-
+			int numChild;
+			
 
         };

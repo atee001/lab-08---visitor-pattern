@@ -43,9 +43,9 @@ using namespace std;
 		
 			void accept(Visitor* visit, int index){
 		
-				if(index == 0) return visitor->visit_sub_begin(this);
-				else if(index == 1) return visitor->visit_sub_middle(this);
-				else return visitor->visit_sub_end(this);
+				if(index == 0) return visit->visit_sub_begin(this);
+				else if(index == 1) return visit->visit_sub_middle(this);
+				else return visit->visit_sub_end(this);
 			
 			}
 

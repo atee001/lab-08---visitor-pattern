@@ -40,6 +40,13 @@ using namespace std;
 			int number_of_children() {
 				return 2;
 			}
+		
+			 void accept(Visitor* visitor, int index){
+
+        			return (index == 0) ? visitor->visit_pow__begin(this) : (index == 1) ? visitor->visit_pow_middle(this) : visitor->visit_pow_end(this);
+
+    			}	
+
 
 
 		private:

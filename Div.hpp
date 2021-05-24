@@ -43,6 +43,13 @@ class Div : public Base {
      return (i == 0) ? lhs : (i == 1) ? rhs : nullptr;
     
     }
+	
+
+     void accept(Visitor* visitor, int index){
+
+        return (index == 0) ? visitor->visit_div_begin(this) : (index == 1) ? visitor->visit_div_middle(this) : visitor->visit_div_end(this);
+
+    }
 
   private:
 

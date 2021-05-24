@@ -39,6 +39,11 @@ class Mult : public Base {
              return 2;
      }
 
+    void accept(Visitor* visitor, int index){
+
+	return (index == 0) ? visitor->visit_mult_begin(this) : (index == 1) ? visitor->visit_mult_middle(this) : visitor->visit_mult_end(this);
+
+    }
 
   private:
 

@@ -17,6 +17,11 @@ class Op : public Base {
 			ss << setprecision(8) << noshowpoint << value;
 			return ss.str();
 	}
+
+		Base* get_child(int i){			
+			return (i == 0) ? lhs : (i == 1) ? rhs : nullptr;
+
+		}		
 	private:
 		double value;
 

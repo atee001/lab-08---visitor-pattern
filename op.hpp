@@ -28,7 +28,7 @@ class Op : public Base {
 		}		
 
 		void accept(Visitor* visitor, int index) {
-			if(index == 0) return visitor->visit_op(this);
+			return visitor->visit_op(this);
                	} 
 
 	private:

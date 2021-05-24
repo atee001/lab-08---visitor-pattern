@@ -28,10 +28,18 @@ using namespace std;
 				delete lhs;
 				delete rhs;
 			}
-			
+
 			int number_of_children() {
-                                numChild = 2;
-                        }
+           return 2;
+      }
+
+
+				
+			Base* get_child(int i){
+
+     				return (i == 0) ? lhs : (i == 1) ? rhs : nullptr;
+
+    			}
 
 
                 private:

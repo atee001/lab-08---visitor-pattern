@@ -29,15 +29,20 @@ class Mult : public Base {
       return "(" + lhs->stringify() + "*" + rhs->stringify() + ")";
 
     }
+    Base* get_child(int i){
+      
+      return (i == 0) ? lhs : (i == 1) ? rhs : nullptr;
 
-    int number_of_children() {       
-      numChild = 2;
+    }
+
+    int number_of_children() {
+             return 2;
      }
 
-   
+
   private:
 
     Base* lhs;
     Base* rhs;
-    int numChild;
+
 };

@@ -18,13 +18,20 @@ class Rand : public Base {
 			ostringstream ss;
 			ss << setprecision(8) << noshowpoint << value;
 			return ss.str();
+
 		}
 		int number_of_children() {
-                        numChild = 1;
-                }
+         return 0;
+     }
+
+		Base* get_child(int i){
+
+     			return nullptr;
+
+    		}
 
 
 	private:
 		double value;
-		int numChild;
+	
 };

@@ -38,6 +38,12 @@ class Div : public Base {
     }
 
 
+    Base* get_child(int i){
+
+     return (i == 0) ? lhs : (i == 1) ? rhs : nullptr;
+    
+    }
+
   private:
 
     Base* lhs;

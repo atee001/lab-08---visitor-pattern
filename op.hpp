@@ -17,6 +17,9 @@ class Op : public Base {
 			ss << setprecision(8) << noshowpoint << value;
 			return ss.str();
 	}
+		int number_of_children() {
+			return 0;
+		}
 	private:
 		double value;
 

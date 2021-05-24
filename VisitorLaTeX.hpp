@@ -12,18 +12,14 @@ class VisitorLaTeX : Visitor{
 		VisotorLatex(const string& expTree) : expTree(expTree){}
 
 		void visit_op(Op* node){
-		
-			expTree += "{";
-			expTree += node->stringify();
-			expTree += "}";	
-
+			
+			expTree += "{" + node->stringify() + "}";
+			
 		}
 
         	void visit_rand(Rand* node){
-
-			expTree += "{";
-                        expTree += node->stringify();
-                        expTree += "}";
+			
+			expTree += "{" + node->stringify() + "}";
 			
 		}
 	

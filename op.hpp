@@ -18,10 +18,15 @@ class Op : public Base {
 			return ss.str();
 	}
 
+		int number_of_children() {
+			return 0;
+		}
+
 		Base* get_child(int i){			
 			return nullptr;
 
 		}		
+
 	private:
 		double value;
 

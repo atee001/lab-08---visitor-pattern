@@ -27,8 +27,9 @@ class Op : public Base {
 
 		}		
 
-		if(index == 0) return visitor->visit_op(this);
-               
+		void accept(Visitor* visitor, int index) {
+			if(index == 0) return visitor->visit_op(this);
+               	} 
 
 	private:
 		double value;

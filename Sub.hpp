@@ -30,8 +30,8 @@ using namespace std;
 			}
 
 			int number_of_children() {
-           return 2;
-      }
+           			return 2;
+      			}
 
 
 				
@@ -50,7 +50,7 @@ using namespace std;
 
                         Base* lhs;
                         Base* rhs;
-			int numChild;
+			
 			
 
         };

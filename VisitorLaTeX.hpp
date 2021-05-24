@@ -51,17 +51,36 @@ class VisitorLaTeX : Visitor{
         	void visit_mult_begin(Mult* node);
         	void visit_mult_middle(Mult* node);
         	void visit_mult_end(Mult* node);
-        	void visit_div_begin(Div* node){
+		void visit_div_begin(Div* node){
 
-			
-	
-		}
-        	void visit_div_middle(Div* node);
-        	void visit_div_end(Div* node);
-        	void visit_pow_begin(Pow* node);
-        	void visit_pow_middle(Pow* node);
-        	void visit_pow_end(Pow* node);
-	
+      			expTree += "{";
+
+	   	}
+  		void visit_div_middle(Div* node){
+
+      			expTree += "\\frac";
+
+    		}
+  		void visit_div_end(Div* node){
+
+      			expTree += "}"
+
+    		}
+  		void visit_pow_begin(Pow* node){
+
+      			expTree += "{";
+
+    		}
+  		void visit_pow_middle(Pow* node){
+
+      			expTree += "^";
+
+    		}
+  		void visit_pow_end(Pow* node){
+
+      			expTree += "}"
+      
+   		 }	
 	private:
 	
 		string expTree;

@@ -39,6 +39,9 @@ using namespace std;
 
                         }		
 
+			if(index == 0) return visitor->visit_add_begin(this);
+			else if(index == 1) return visitor->visit_add_middle(this);
+			else return visitor->visit_add_end(this);
 
                 private:
 

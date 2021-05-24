@@ -40,6 +40,10 @@ using namespace std;
      				return (i == 0) ? lhs : (i == 1) ? rhs : nullptr;
 
     			}
+		
+			if(index == 0) return visitor->visit_sub_begin(this);
+                        else if(index == 1) return visitor->visit_sub_middle(this);
+                        else return visitor->visit_sub_end(this);
 
 
                 private:

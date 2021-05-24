@@ -59,7 +59,7 @@ class VisitorLaTeX : Visitor{
                         expTree += "{(";
                 }
                 virtual void visit_mult_middle(Mult* node) {
-                        expTree += "*";
+                        expTree += "\cdot";
                 }
                 virtual void visit_mult_begin(Mult* node) {
                         expTree += ")}";

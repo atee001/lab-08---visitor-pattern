@@ -19,6 +19,13 @@ class Rand : public Base {
 			ss << setprecision(8) << noshowpoint << value;
 			return ss.str();
 	}
+
+		Base* get_child(int i){
+
+     			return nullptr;
+
+    		}
+
 	private:
 		double value;
 

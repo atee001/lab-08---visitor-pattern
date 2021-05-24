@@ -52,3 +52,9 @@ TEST(NumChildTest, Pow) {
 	delete p;
 }
 
+TEST(NumChildTest, OP) {
+	Base* o = new Op(0);
+
+	EXPECT_EQ(o->number_of_children(), 0);
+	delete o;
+}

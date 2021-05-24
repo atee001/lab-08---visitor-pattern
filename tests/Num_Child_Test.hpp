@@ -1,11 +1,11 @@
 #pragma once
 
 #include "gtest/gtest.h"
-#include "Add.hpp"
-#include "Sub.hpp"
-#include "Mult.hpp"
-#include "Div.hpp"
-#include "Pow.hpp"
+#include "../Add.hpp"
+#include "../Sub.hpp"
+#include "../Mult.hpp"
+#include "../Div.hpp"
+#include "../Pow.hpp"
 
 TEST(NumChildTest, Add) {
 	Base* left = new Op(0);
@@ -13,6 +13,7 @@ TEST(NumChildTest, Add) {
 	Add* a = new Add(left,right);
 
 	EXPECT_EQ(a->number_of_children(), 2);
+	delete a;
 }
 
 TEST(NumChildTest, Sub) {
@@ -21,6 +22,7 @@ TEST(NumChildTest, Sub) {
         Sub* s = new Sub(left,right);
 
         EXPECT_EQ(s->number_of_children(), 2);
+	delete s;
 }
 
 TEST(NumChildTest, Mult) {
@@ -29,6 +31,7 @@ TEST(NumChildTest, Mult) {
         Mult* m = new Mult(left,right);
 
         EXPECT_EQ(m->number_of_children(), 2);
+	delete m;
 }
 
 TEST(NumChildTest, Div) {
@@ -37,6 +40,7 @@ TEST(NumChildTest, Div) {
         Div* d = new Div(left,right);
 
         EXPECT_EQ(d->number_of_children(), 2);
+	delete d;
 }
 
 TEST(NumChildTest, Pow) {
@@ -45,5 +49,6 @@ TEST(NumChildTest, Pow) {
         Pow* p = new Pow(left,right);
 
         EXPECT_EQ(p->number_of_children(), 2);
+	delete p;
 }
 

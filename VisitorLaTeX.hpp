@@ -6,6 +6,10 @@ class VisitorLaTeX : Visitor{
 	
 	
 	public:
+		
+		VisitorLatex(){ expTree = ""; }
+		
+		VisotorLatex(const string& expTree) : expTree(expTree){}
 
 		void visit_op(Op* node){
 		
@@ -22,7 +26,18 @@ class VisitorLaTeX : Visitor{
                         expTree += "}";
 			
 		}
+	
+		string getexpTree() const{
+			
+			return expTree;
+	
+		}
 
+		void setexpTree(const string& expTree){
+		
+			this->expTree = expTree;
+
+		}
        	// Nodes with two children are visited three times.
         // index = 0 -> begin
         // index = 1 -> middle
@@ -49,6 +64,6 @@ class VisitorLaTeX : Visitor{
 	
 	private:
 	
-		string expTree = " ";
+		string expTree;
 
 };

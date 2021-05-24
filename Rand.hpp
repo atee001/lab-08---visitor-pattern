@@ -29,6 +29,11 @@ class Rand : public Base {
      			return nullptr;
 
     		}
+	 void accept(Visitor* visitor, int index){
+
+        	return visitor->visit_rand(this);
+
+    	}	
 
 
 	private:

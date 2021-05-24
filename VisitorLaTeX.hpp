@@ -34,6 +34,38 @@ class VisitorLaTeX : Visitor{
 			this->expTree = expTree;
 
 		}
+
+		virtual void visit_add_begin(Add* node) {
+			expTree += "{(";
+		}
+		virtual void visit_add_middle(Add* node) {
+			expTree += "+";
+		}
+		virtual void visit_add_begin(Add* node) {
+			expTree += ")}";
+		}
+
+		virtual void visit_sub_begin(Sub* node) {
+                        expTree += "{(";
+                }
+                virtual void visit_sub_middle(Sub* node) {
+                        expTree += "-";
+                }
+                virtual void visit_sub_begin(Sub* node) {
+                        expTree += ")}";
+                }
+
+		virtual void visit_mult_begin(Mult* node) {
+                        expTree += "{(";
+                }
+                virtual void visit_mult_middle(Mult* node) {
+                        expTree += "*";
+                }
+                virtual void visit_mult_begin(Mult* node) {
+                        expTree += ")}";
+                }
+
+			
        	// Nodes with two children are visited three times.
         // index = 0 -> begin
         // index = 1 -> middle

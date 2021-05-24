@@ -34,7 +34,7 @@ class Div : public Base {
 
     }
     int number_of_children() {
-      numChild = 2;
+      return 2;
     }
 
 
@@ -48,5 +48,5 @@ class Div : public Base {
 
     Base* lhs;
     Base* rhs;
-    int numChild;
+
 };

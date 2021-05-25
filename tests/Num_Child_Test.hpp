@@ -6,6 +6,7 @@
 #include "../Mult.hpp"
 #include "../Div.hpp"
 #include "../Pow.hpp"
+#include "../Rand.hpp"
 
 TEST(NumChildTest, Add) {
 	Base* left = new Op(0);
@@ -57,4 +58,11 @@ TEST(NumChildTest, OP) {
 
 	EXPECT_EQ(o->number_of_children(), 0);
 	delete o;
+}
+
+TEST(NumChildTest, Rand) {
+	Base* r = new Rand();
+
+	EXPECT_EQ(r->number_of_children(), 0);
+	delete r;
 }

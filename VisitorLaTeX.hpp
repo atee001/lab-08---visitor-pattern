@@ -1,29 +1,36 @@
 #include "visitor.hpp"
+#include "iterator.hpp"
+#include <iostream>
+#include "Add.hpp"
+#include "Sub.hpp"
+#include "Pow.hpp"
+#include "Mult.hpp"
+#include "Div.hpp"
+#include "base.hpp"
+#include "op.hpp"
+#include "Rand.hpp"
+using namespace std;
 #pragma once
 
 
-class VisitorLaTeX : Visitor{
+class VisitorLatex : Visitor{
 	
 	
 	public:
 		
 		VisitorLatex(){ expTree = ""; }
 		
-		VisotorLatex(const string& expTree) : expTree(expTree){}
+		VisitorLatex(const string& expTree) : expTree(expTree){}
 
 		void visit_op(Op* node){
-		
-			expTree += "{";
-			expTree += node->stringify();
-			expTree += "}";	
-
+			
+			expTree += "{" + node->stringify() + "}";
+			
 		}
 
         	void visit_rand(Rand* node){
-
-			expTree += "{";
-                        expTree += node->stringify();
-                        expTree += "}";
+			
+			expTree += "{" + node->stringify() + "}";
 			
 		}
 	
@@ -45,7 +52,7 @@ class VisitorLaTeX : Visitor{
 		virtual void visit_add_middle(Add* node) {
 			expTree += "+";
 		}
-		virtual void visit_add_begin(Add* node) {
+		virtual void visit_add_end(Add* node) {
 			expTree += ")}";
 		}
 
@@ -55,7 +62,7 @@ class VisitorLaTeX : Visitor{
                 virtual void visit_sub_middle(Sub* node) {
                         expTree += "-";
                 }
-                virtual void visit_sub_begin(Sub* node) {
+                virtual void visit_sub_end(Sub* node) {
                         expTree += ")}";
                 }
 
@@ -63,37 +70,59 @@ class VisitorLaTeX : Visitor{
                         expTree += "{(";
                 }
                 virtual void visit_mult_middle(Mult* node) {
-                        expTree += "\cdot";
+                        expTree += "\\cdot";
                 }
-                virtual void visit_mult_begin(Mult* node) {
+                virtual void visit_mult_end(Mult* node) {
                         expTree += ")}";
                 }
 
-			
-       	// Nodes with two children are visited three times.
-        // index = 0 -> begin
-        // index = 1 -> middle
-        // index = 2 -> end
-        	void visit_add_begin(Add* node);
-        	void visit_add_middle(Add* node);
-        	void visit_add_end(Add* node);
-        	void visit_sub_begin(Sub* node);
-        	void visit_sub_middle(Sub* node);
-        	void visit_sub_end(Sub* node);
-        	void visit_mult_begin(Mult* node);
-        	void visit_mult_middle(Mult* node);
-        	void visit_mult_end(Mult* node);
-        	void visit_div_begin(Div* node){
+		void visit_div_begin(Div* node){
 
+      			expTree += "{\\frac";
+
+	   	}
+  		void visit_div_middle(Div* node){
+
+      			
+
+    		}
+  		void visit_div_end(Div* node){
+
+      			expTree += "}";
+
+    		}
+  		void visit_pow_begin(Pow* node){
+
+      			expTree += "{(";
+
+    		}
+  		void visit_pow_middle(Pow* node){
+
+      			expTree += "^";
+
+    		}
+  		void visit_pow_end(Pow* node){
+
+      			expTree += ")}";
+      
+   		 }
+	
+		string PrintLaTeX(Base* ptr){
 			
-	
-		}
-        	void visit_div_middle(Div* node);
-        	void visit_div_end(Div* node);
-        	void visit_pow_begin(Pow* node);
-        	void visit_pow_middle(Pow* node);
-        	void visit_pow_end(Pow* node);
-	
+
+			Iterator* it = new Iterator(ptr);			
+			for(it; !it->is_done();  it->next()){
+			
+				(it->current_node())->accept(this, it->current_index());	
+				
+			}	
+
+			delete it;			
+
+			return "$" + this->getexpTree() + "$";
+			
+			
+		}	
 	private:
 	
 		string expTree;

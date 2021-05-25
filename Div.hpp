@@ -5,55 +5,56 @@
 
 class Div : public Base {
 
-  public:
+	public:
 
-    Div(Base* lhs, Base* rhs) : Base(){
+		Div(Base* lhs, Base* rhs) : Base(){
 
-      this->lhs = lhs;
-      this->rhs = rhs;
-      assert(rhs->evaluate() != 0 && "Cannot Divide by Zero!"); // divide by zero
+			this->lhs = lhs;
+			this->rhs = rhs;
+			assert(rhs->evaluate() != 0 && "Cannot Divide by Zero!"); // divide by zero
 
-    }
+		}
 
-    double evaluate(){
+		double evaluate(){
 
-      return lhs->evaluate()/rhs->evaluate();
+			return lhs->evaluate()/rhs->evaluate();
 
-    }
-   
-    ~Div(){
+		}
 
-	delete rhs;
-	delete lhs;
+		~Div(){
 
-	}
+			delete rhs;
+			delete lhs;
 
-    string stringify(){
+		}
 
-      return "(" + lhs->stringify() + "/" + rhs->stringify() + ")";
+		string stringify(){
 
-    }
-    int number_of_children() {
-      return 2;
-    }
+			return "(" + lhs->stringify() + "/" + rhs->stringify() + ")";
 
-
-    Base* get_child(int i){
-
-     return (i == 0) ? lhs : (i == 1) ? rhs : nullptr;
-    
-    }
+		}
 	
+		int number_of_children() {
+			return 2;
+		}
 
-     void accept(Visitor* visitor, int index){
 
-        return (index == 0) ? visitor->visit_div_begin(this) : (index == 1) ? visitor->visit_div_middle(this) : visitor->visit_div_end(this);
+		Base* get_child(int i){
 
-    }
+			return (i == 0) ? lhs : (i == 1) ? rhs : nullptr;
 
-  private:
+		}
 
-    Base* lhs;
-    Base* rhs;
+
+		void accept(Visitor* visitor, int index){
+
+			return (index == 0) ? visitor->visit_div_begin(this) : (index == 1) ? visitor->visit_div_middle(this) : visitor->visit_div_end(this);
+
+		}
+
+	private:
+
+		Base* lhs;
+		Base* rhs;
 
 };

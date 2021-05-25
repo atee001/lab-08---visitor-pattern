@@ -76,3 +76,25 @@ TEST(LatexUnitTests, MultDivPow){
 
 }
 
+TEST(LatexUnitTests, All) {
+
+	Base* one = new Op(1);
+	Base* two = new Op(2);
+	Base* three = new Op(3);
+	Base* four = new Op(4);
+	Base* five = new Op(5);
+	Base* six = new Op(6);
+
+	Base* add = new Add(one, two);
+	Base* sub = new Sub(add, three);
+	Base* mult = new Mult(sub, four);
+	Base* div = new Div(mult, five);
+	Base* pow = new Pow(div, six);
+
+	VisitorLatex* latex = new VisitorLatex();
+	EXPECT_EQ("${({\\frac{({({({1}+{2})}-{3})}\\cdot{4})}{5}}^{6})}$", latex->PrintLaTeX(pow));
+
+	delete latex;
+	delete pow;
+}
+

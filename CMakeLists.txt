@@ -8,7 +8,10 @@ ADD_EXECUTABLE(test
 	tests/unit_tests.cpp
 	
 )
-
+ADD_EXECUTABLE(driver
+	iterator.cpp
+	main.cpp
+)
 
 TARGET_LINK_LIBRARIES(test gtest)
 TARGET_COMPILE_DEFINITIONS(test PRIVATE g_test_disable_pthreads=ON)

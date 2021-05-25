@@ -1,15 +1,26 @@
 #include "visitor.hpp"
+#include "iterator.hpp"
+#include <iostream>
+#include "Add.hpp"
+#include "Sub.hpp"
+#include "Pow.hpp"
+#include "Mult.hpp"
+#include "Div.hpp"
+#include "base.hpp"
+#include "op.hpp"
+#include "Rand.hpp"
+using namespace std;
 #pragma once
 
 
-class VisitorLaTeX : Visitor{
+class VisitorLatex : Visitor{
 	
 	
 	public:
 		
 		VisitorLatex(){ expTree = ""; }
 		
-		VisotorLatex(const string& expTree) : expTree(expTree){}
+		VisitorLatex(const string& expTree) : expTree(expTree){}
 
 		void visit_op(Op* node){
 			
@@ -41,7 +52,7 @@ class VisitorLaTeX : Visitor{
 		virtual void visit_add_middle(Add* node) {
 			expTree += "+";
 		}
-		virtual void visit_add_begin(Add* node) {
+		virtual void visit_add_end(Add* node) {
 			expTree += ")}";
 		}
 
@@ -51,7 +62,7 @@ class VisitorLaTeX : Visitor{
                 virtual void visit_sub_middle(Sub* node) {
                         expTree += "-";
                 }
-                virtual void visit_sub_begin(Sub* node) {
+                virtual void visit_sub_end(Sub* node) {
                         expTree += ")}";
                 }
 
@@ -59,9 +70,9 @@ class VisitorLaTeX : Visitor{
                         expTree += "{(";
                 }
                 virtual void visit_mult_middle(Mult* node) {
-                        expTree += "\cdot";
+                        expTree += "\\cdot";
                 }
-                virtual void visit_mult_begin(Mult* node) {
+                virtual void visit_mult_end(Mult* node) {
                         expTree += ")}";
                 }
 
@@ -77,7 +88,7 @@ class VisitorLaTeX : Visitor{
     		}
   		void visit_div_end(Div* node){
 
-      			expTree += "}"
+      			expTree += "}";
 
     		}
   		void visit_pow_begin(Pow* node){
@@ -92,9 +103,26 @@ class VisitorLaTeX : Visitor{
     		}
   		void visit_pow_end(Pow* node){
 
-      			expTree += "}"
+      			expTree += "}";
       
-   		 }	
+   		 }
+	
+		string PrintLaTeX(Base* ptr){
+			
+
+			Iterator* it = new Iterator(ptr);			
+			for(it; !it->is_done();  it->next()){
+			
+				(it->current_node())->accept(this, it->current_index());	
+				
+			}	
+
+			delete it;			
+
+			return "$" + this->getexpTree() + "$";
+			
+			
+		}	
 	private:
 	
 		string expTree;

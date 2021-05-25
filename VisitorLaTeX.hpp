@@ -78,12 +78,12 @@ class VisitorLatex : Visitor{
 
 		void visit_div_begin(Div* node){
 
-      			expTree += "{";
+      			expTree += "{\\frac";
 
 	   	}
   		void visit_div_middle(Div* node){
 
-      			expTree += "\\frac";
+      			
 
     		}
   		void visit_div_end(Div* node){
@@ -93,7 +93,7 @@ class VisitorLatex : Visitor{
     		}
   		void visit_pow_begin(Pow* node){
 
-      			expTree += "{";
+      			expTree += "{(";
 
     		}
   		void visit_pow_middle(Pow* node){
@@ -103,7 +103,7 @@ class VisitorLatex : Visitor{
     		}
   		void visit_pow_end(Pow* node){
 
-      			expTree += "}";
+      			expTree += ")}";
       
    		 }
 	

@@ -6,7 +6,7 @@
 #include "../Div.hpp"
 #include "../base.hpp"
 #include "../op.hpp"
-
+#include "Latex_Tests.hpp"
 #include "../iterator.hpp"
 
 #include "Num_Child_Test.hpp"

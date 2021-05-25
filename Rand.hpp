@@ -17,7 +17,7 @@ class Rand : public Base {
 		virtual std::string stringify() { 
 			ostringstream ss;
 			ss << setprecision(8) << noshowpoint << value;
-		return ss.str();
+			return ss.str();
 
 		}
 		int number_of_children() {
@@ -36,8 +36,8 @@ class Rand : public Base {
 		}	
 
 
-private:
+	private:
 	
-	double value;
+		double value;
 
 };
